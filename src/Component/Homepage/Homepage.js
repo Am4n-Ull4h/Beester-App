@@ -12,6 +12,9 @@ import { useSelector } from "react-redux";
 function Homepage() {
   const { data } = useSelector((state) => state.user);
 
+  console.log(data);
+  
+
   const navigate = useNavigate();
 
   const getUser = async () => {

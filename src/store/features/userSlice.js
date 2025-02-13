@@ -16,7 +16,7 @@ export const loginUser = createAsyncThunk(
   "user/loginUser",
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${apiURL}/api/v1/login`, {
+      const response = await axios.post(`http://localhost:6005/api/v1/login`, {
         email,
         password,
       });
@@ -46,9 +46,9 @@ export const signupUser = createAsyncThunk(
   async (
     { displayName, email, password, country, state, city, referral },
     { rejectWithValue }
-  ) => {
+  ) => {    
     try {
-      const response = await axios.post(`${apiURL}/api/v1/register`, {
+      const response = await axios.post(`http://localhost:6005/api/v1/register`, {
         displayName,
         email,
         password,
@@ -58,7 +58,8 @@ export const signupUser = createAsyncThunk(
         referral, // Pass referral ID
       });
       const { token, user } = response.data;
-
+      console.log(response);
+      
       // Store the token in localStorage
       localStorage.setItem("token", token);
 
@@ -166,5 +167,6 @@ const userSlice = createSlice({
       });
   },
 });
+
 
 export default userSlice.reducer;

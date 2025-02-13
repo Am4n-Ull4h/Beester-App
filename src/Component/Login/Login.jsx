@@ -60,6 +60,7 @@ const Auth = () => {
     dispatch(signupUser(userData));
   };
 
+  
   // Redirect if logged in
   if (data?._id) {
     navigate("/home");
